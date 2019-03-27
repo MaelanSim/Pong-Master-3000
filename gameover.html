@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> Game Over </title>
+<script src="https://simplycodingcourses.com/files/simplyjs/simply.js"></script>
+<script>
+function start(){
+sjs.open();
+
+//text
+var gameover1 = new sjs.Text("Play Again?",28,"blue")
+gameover1.centerH().offset(0,96);
+
+var gameover0 = new sjs.Text("You Lose!",28,"blue")
+gameover0.centerH().offset (0,60);
+
+//buttons
+var restartBtn = new sjs.Button("Replay", function(){
+window.location = "pong.html";
+});
+restartBtn.center().offset(0,40);
+
+var menuBtn = new sjs.Button("Menu", function(){
+window.location = "index.html";
+});
+menuBtn.center();
+
+//images
+var LeonardTheBall = new sjs.Image("Images/spike.png");
+LeonardTheBall.centerV().offset(50,0)
+
+var PollyPaddle0 = new sjs.Image("Images/paddle.png");
+PollyPaddle0.setSize (180,20);
+PollyPaddle0.center().offset(130,95);
+PollyPaddle0.node.style.transform = "rotate(-40deg)";
+
+var PollyPaddle2 = new sjs.Image("Images/paddle2.png");
+PollyPaddle2.setSize (20,180);
+PollyPaddle2.center().offset(-130,-110);
+PollyPaddle2.node.style.transform = "rotate(50deg)";
+}
+</script>
+</head>
+<body onload="start()">
+<h1> Game Over! </h1>
+
+<div id="target" style="margin:auto;background:lightgrey;"></div>
+</body>
+</html>

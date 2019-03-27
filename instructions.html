@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> Instructions </title>
+<script src="https://simplycodingcourses.com/files/simplyjs/simply.js"></script>
+<script>
+function start(){
+sjs.open();
+
+//menu
+var menu_text = new sjs.Text("Instructions",28,"blue");
+menu_text.centerH().offset(0,20);
+
+var game_text0 = new sjs.Text("Use the Arrow Keys to Control the Paddles!",20,"black");
+game_text0.centerH().offset(0,70);
+
+//paddles
+var game_text1 = new sjs.Text("Use the Left and Right Arrow",20,"darkblue");
+game_text1.centerV().left().offset(30,-70);
+
+var game_text2 = new sjs.Text("Keys to Move the Blue Paddles.",20,"darkblue");
+game_text2.centerV().left().offset(30,-40);
+
+var game_text3 = new sjs.Text("Use the Up and Down Arrow",20,"darkred");
+game_text3.centerV().right().offset(-30,10);
+
+var game_text4 = new sjs.Text("Keys to Move the Red Paddles",20,"darkred");
+game_text4.centerV().right().offset(-30,40);
+
+var PollyPaddle0 = new sjs.Image("Images/paddle.png");
+PollyPaddle0.type = "paddle";
+PollyPaddle0.setSize (80,12);
+PollyPaddle0.center().right().offset(-50,-80);
+
+var PollyPaddle1 = new sjs.Image("Images/paddle.png");
+PollyPaddle1.type = "paddle";
+PollyPaddle1.setSize (80,12);
+PollyPaddle1.center().right().offset(-50,-35);
+
+var PollyPaddle2 = new sjs.Image("Images/paddle2.png");
+PollyPaddle2.type = "paddle";
+PollyPaddle2.setSize (11,70);
+PollyPaddle2.centerV().left().offset(40,25);
+
+var PollyPaddle3 = new sjs.Image("Images/paddle2.png");
+PollyPaddle3.type = "paddle";
+PollyPaddle3.setSize (11,70);
+PollyPaddle3.centerV().left().offset(120,25);
+
+//ball
+var game_text5 = new sjs.Text("Keep the Ball from Hitting the Wall.",20,"black");
+game_text5.center().left().offset(30,95);
+
+var LeonardTheBall = new sjs.Image("Images/spike.png")
+LeonardTheBall.setSize (40,40);
+LeonardTheBall.bottom().right().offset(-60,-80);
+
+//button
+var menuBtn = new sjs.Button("Back to Menu", function(){
+window.location = "index.html";
+});
+menuBtn.centerH().bottom().offset(0,-30);
+
+}
+</script>
+</head>
+<body onload="start()">
+<h1> Instructions </h1>
+
+<div id="target" style="margin:auto;background:lightgrey;"></div>
+</body>
+</html>

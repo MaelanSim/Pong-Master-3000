@@ -1,0 +1,111 @@
+<h<html>
+<head>
+<title> Pong </title>
+<script src="simply.js"></script>
+<script>
+function start(){
+
+//background
+sjs.open("target",650,500);
+
+//text background
+var txt = new sjs.Text("PONG", 90,"black");
+txt.center();
+
+//paddles
+var PollyPaddle0 = new sjs.Image("Images/paddle.png");
+PollyPaddle0.type = "paddle";
+PollyPaddle0.setSize (250,30);
+PollyPaddle0.centerH();
+
+var PollyPaddle1 = new sjs.Image("Images/paddle.png");
+PollyPaddle1.type = "paddle";
+PollyPaddle1.setSize (250,30);
+PollyPaddle1.centerH().bottom();
+
+var PollyPaddle2 = new sjs.Image("Images/paddle2.png");
+PollyPaddle2.type = "paddle";
+PollyPaddle2.setSize (30,250);
+PollyPaddle2.centerV().left();
+
+var PollyPaddle3 = new sjs.Image("Images/paddle2.png");
+PollyPaddle3.type = "paddle";
+PollyPaddle3.setSize (30,250);
+PollyPaddle3.centerV().right();
+
+//paddle movements
+sjs.keyDown(LEFT_KEY, function(){
+PollyPaddle0.pushLeft(3);
+PollyPaddle1.pushLeft(3);
+});
+
+sjs.keyDown(RIGHT_KEY, function(){
+PollyPaddle0.pushRight(3);
+PollyPaddle1.pushRight(3);
+});
+
+sjs.keyDown(UP_KEY, function(){
+PollyPaddle2.pushUp(3);
+PollyPaddle3.pushUp(3);
+})
+
+sjs.keyDown(DOWN_KEY, function(){
+PollyPaddle2.pushDown(3);
+PollyPaddle3.pushDown(3);
+});
+
+"paddle".friction = 0;
+
+//hit physics
+sjs.onHit("ball","paddle", function(ball,paddle){
+sjs.bounceOff(ball,paddle);
+});
+sjs.onHit("ball","paddle", function(ball,paddle){
+sjs.bounceOff(ball,paddle);
+});
+
+//score
+var score = 0;
+var score_txt = new sjs.Text("Score: 0", 21, "red"); 
+
+sjs.onHit("ball","paddle",
+function(ball,paddle){
+score = score + 1;
+score_txt.setText("Score: "+score);
+sjs.bounceOff(ball,paddle);
+});
+
+//ball
+var LeonardTheBall = new sjs.Image("Images/spike.png");
+LeonardTheBall.type = "ball";
+LeonardTheBall.setSize (100,100);
+LeonardTheBall.center();
+LeonardTheBall.friction = 0;
+LeonardTheBall.pushUp(16);
+LeonardTheBall.pushRight(10);
+LeonardTheBall.bounce();
+
+//lives
+var lives = 3;
+var lives_txt = new sjs.Text("Lives: 3", 21, "red"); 
+lives_txt.right().offset(-5,0);
+
+sjs.onHit("ball",["top_screen","bottom_screen","left_screen","right_screen"], function(ball,edge){
+lives--;
+lives_txt.setText("lives: "+lives);
+if(lives == 0){ 
+ window.location = "gameover.html"; 
+}
+sjs.bounceOff(ball,edge);
+});
+
+} 
+
+</script>
+</head>
+<body onload="start()">
+<h1> Pong Master 3000 </h1>
+
+<div id="target" style="margin:auto;background:lightgrey;"></div>
+</body>
+</html>

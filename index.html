@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> Menu </title>
+<script src="https://simplycodingcourses.com/files/simplyjs/simply.js"></script>
+<script>
+function start(){
+sjs.open();
+
+//menu
+var menu_text = new sjs.Text("MENU",28,"blue");
+menu_text.centerH().offset(0,20);
+
+//text
+var game_text = new sjs.Text("Use the Arrow Keys to Control the Paddles.  Don't Let the Ball Get By You!",27,"yellow");
+game_text.centerH().offset(15,95);
+
+var game_text = new sjs.Text("You Have Three Lives.",27,"yellow");
+game_text.centerH().offset(0,290);
+
+var info_text = new sjs.Text("Created By MaelanSim",20,"black")
+info_text.bottom().centerH().offset(0,-20);
+
+//buttons
+var startBtn = new sjs.Button("Start", function(){
+window.location = "pong.html";
+});
+startBtn.center().offset(0,5);
+
+var helpBtn = new sjs.Button("Instructions", function(){
+window.location = "instructions.html";
+});
+helpBtn.center().offset(0,55);
+}
+</script>
+</head>
+<body onload="start()">
+<h1> Menu </h1>
+
+<div id="target" style="margin:auto;background:lightgrey;"></div>
+</body>
+</html>
